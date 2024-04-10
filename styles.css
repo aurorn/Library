@@ -57,6 +57,47 @@ html {
     
 }
 
+.add-book-popup {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    top: 20%;
+    left: 40%;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    padding: 15px;
+    background-color: white;
+  }
+
+.form-container input[type=text] {
+    width: 90%;
+    padding: 10px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+    
+  }
+
+.form-container input[type=text]:focus {
+    background-color: #ddd;
+    outline: none;
+  }
+
+.form-container .btn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom:10px;
+    opacity: 0.8;
+  }
+
 .library {
     display: grid;
     grid: repeat(3, 1fr) / repeat(3, 1fr);
