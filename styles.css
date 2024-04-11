@@ -1,11 +1,25 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    
 }
 
-html {
+
+html, body {
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
+}
+
+.overlayDarken {
+    
+    background-color:rgba(0, 0, 0, 0.2) ;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    
 }
 
 .maingrid {
@@ -32,20 +46,20 @@ html {
     display: flex;
     flex-direction: column;
     background-color: rgb(92, 92, 92);
-    min-height: 100vh;
+    height: 100vh;
     align-items: center;
     padding-top: 20px;
 }
 
 #add-book {
     display: inline-block;
-    background-color: rgb(85, 185, 85);
-    border: 0.1em solid #000000;
+    background-color: rgb(134, 253, 150);
+    border: none;
     padding: .5vw 3vw;
     text-align: center;
-    font-size: 1.3vw;
+    font-size: 25px;
     color: black;
-    border-radius: 2px;
+    border-radius: 5px;
     transition-duration: 0.1s;
 }
 
@@ -61,42 +75,56 @@ html {
     display: none;
     position: fixed;
     z-index: 1;
-    top: 20%;
-    left: 40%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -65%);
+    
 }
+
 
 .form-container {
     display: flex;
     flex-direction: column;
     max-width: 300px;
     padding: 15px;
-    background-color: white;
-  }
+    background-color: rgb(99, 99, 99);
+    border-radius: 15px;
+    gap: 5px;
+}
+
+.read-checkbox {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    margin-bottom: 10px;
+
+}
 
 .form-container input[type=text] {
-    width: 90%;
+    width: 100%;
     padding: 10px;
     margin: 5px 0 22px 0;
     border: none;
-    background: #f1f1f1;
+    background: #747474;
     
-  }
+}
 
 .form-container input[type=text]:focus {
-    background-color: #ddd;
+    background-color: #b8b5b5;
     outline: none;
-  }
+}
 
 .form-container .btn {
-    background-color: #04AA6D;
-    color: white;
+    background-color: rgb(134, 253, 150);
+    color: rgb(0, 0, 0);
     padding: 16px 20px;
     border: none;
+    border-radius: 15px;
     cursor: pointer;
     width: 100%;
     margin-bottom:10px;
     opacity: 0.8;
-  }
+}
 
 .library {
     display: grid;

@@ -1,3 +1,15 @@
+
+
+
+
+function openForm() {
+    document.getElementById("myForm").style.display = "block";
+  }
+  
+  function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+  } 
+
 const myLibrary = [];
 
 function Book(title, author, pages, read) {
