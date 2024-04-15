@@ -13,44 +13,48 @@
 
 </head>
 <body>
-  <div class="overlayDarken">
-    <div class="navbar">
-      <h1 id="nav-title">Library</h1>
+  
+  <div class="navbar">
+    <h1 id="navTitle">Library</h1>
+  </div>
+  <div class="maingrid">
+    <div class="sidebar">
+      <ul>
+        <button id="addBook" onclick="openForm()">+</button>
+      </ul>     
     </div>
-    <div class="maingrid">
-      <div class="sidebar">
-        <ul>
-          <button id="add-book" onclick="openForm()">+</button>
-        </ul>
-      
-      </div>
-      <div class="library">
-        <div id="book-card">
-          <div id="book-title"><p>Book Title Here</p></div>
-          <div id="book-author"><p>Book Author Here</p></div>
-          <div id="book-pages"><p>Page number Here</p></div>
-          <div id="book-read"><p>Read / Not read</p></div>
+    <div class="library">
+      <div id="bookCard">
+        <div id="bookTitle"><p>Book Title Here</p></div>
+        <div id="bookAuthor"><p>Book Author Here</p></div>
+        <div id="bookPages"><p>Page number Here</p></div>
+        <div id="bookRead"><p>Read / Not read</p></div>
+        <div class="btn remove-btn">
+          <button id="removeBtn">Remove</button>
         </div>
       </div>
     </div>
   </div>
+  
   <div class="add-book-popup" id="myForm">
     <form action="/action_page.php" class="form-container">
       <h1>Add book Here</h1>
       <label for="book-title"><b>Title:</b></label>
-      <input type="text" placeholder="Enter Book Title" name="book-title" required>
+      <input type="text" placeholder="Enter the Book Title" id="bookTitle" class="input" required>
       <label for="book-author"><b>Author:</b></label>
-      <input type="text" placeholder="Enter Author" name="book-author" required>
+      <input type="text" placeholder="Enter Author's name" id="bookAuthor" class="input" required>
       <label for="book-pages"><b>Pages:</b></label>
-      <input type="text" placeholder="Enter Number of pages" name="book-pages" required>
-      <div class="read-checkbox">
-        <label for="book-read"><b>Read:</b></label>
-        <input type="checkbox" name="book-read" required>
+      <input type="number" placeholder="Enter the Number of pages" id="bookPages" class="input" required>
+      <div class="is-read">
+        <label for="is-read"><b>Read:</b></label>
+        <input type="checkbox" class="checkbox" id="isRead" required>
       </div>
       <button class="btn submit-btn" type="submit" onClick="closeForm()">Submit</button>
     </form>
   </div>
+
 </body>
 <footer></footer>
+<div class="overlay" id="overlay"></div>
 
 </html>
