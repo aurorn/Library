@@ -40,7 +40,7 @@ html, body {
     
 }
 
-#nav-title {
+#navTitle {
     font-size: 7vh;
     color: rgb(134, 253, 150);
 }
@@ -54,7 +54,7 @@ html, body {
     padding-top: 20px;
 }
 
-#add-book {
+#addBook {
     display: inline-block;
     background-color: rgb(134, 253, 150);
     border: none;
@@ -66,11 +66,11 @@ html, body {
     transition-duration: 0.1s;
 }
 
-#add-book:hover {
+#addBook:hover {
     background-color: rgb(91, 204, 91);
 }
 
-#add-book:active {
+#addBook:active {
     
 }
 
@@ -83,7 +83,6 @@ html, body {
     transform: translate(-50%, -65%);
     
 }
-
 
 .form-container {
     display: flex;
@@ -112,7 +111,21 @@ html, body {
     
 }
 
+.form-container input[type=number] {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #747474;
+    
+}
+
 .form-container input[type=text]:focus {
+    background-color: #b8b5b5;
+    outline: none;
+}
+
+.form-container input[type=number]:focus {
     background-color: #b8b5b5;
     outline: none;
 }
@@ -138,7 +151,7 @@ html, body {
     background-color:rgb(63, 63, 63)
 }
 
-#book-card {
+#bookCard {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -148,22 +161,22 @@ html, body {
     background-color: rgb(134, 134, 134);
 }
 
-#book-title {
+#bookTitle {
     font-size: 2vw;
     font-weight: 600;
 }
 
-#book-author {
+#bookAuthor {
     font-size: 1.5vw;
     font-weight: 400;
 }
 
-#book-pages {
+#bookPages {
     font-size: 1.3vw;
     font-weight: 400;
 }
 
-#book-read {
+#bookRead {
     font-size: 1.3vw;
     font-weight: 400;
 }
