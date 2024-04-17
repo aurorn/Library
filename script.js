@@ -1,12 +1,12 @@
 /*function openForm() {
   document.getElementById("myForm").style.display = "block";
   document.getElementById("overlay").style.display = "block";
-}
+} 
   
 function closeForm() {
-  document.getElementById("myForm").style.display = "none";
+  document.getElementById("newBookForm").style.display = "none";
   document.getElementById("overlay").style.display = "none";
-} */
+}  */
 
 let myLibrary = [];
 
@@ -57,12 +57,19 @@ function addBookToLibrary () {
 
 
 let addBookBtn = document.querySelector("#newBookBtn");
-
 addBookBtn.addEventListener("click", function() {
   let newBookForm = document.querySelector("#addBookPopup");
   let overlay = document.querySelector("#overlay");
   newBookForm.style.display = "block";
   overlay.style.display = "block";
+})
+
+let submitBtn = document.querySelector("#submitBtn");
+submitBtn.addEventListener("click", function() {
+  let newBookForm = document.querySelector("#addBookPopup");
+  let overlay = document.querySelector("#overlay");
+  newBookForm.style.display = "none";
+  overlay.style.display = "none";
 })
 
 document.querySelector("#addBookPopup").addEventListener("submit", function(event) {
