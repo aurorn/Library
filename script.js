@@ -1,33 +1,71 @@
-
-
-
-
-function openForm() {
-    document.getElementById("myForm").style.display = "block";
-  }
+/*function openForm() {
+  document.getElementById("myForm").style.display = "block";
+  document.getElementById("overlay").style.display = "block";
+}
   
-  function closeForm() {
-    document.getElementById("myForm").style.display = "none";
-  } 
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+  document.getElementById("overlay").style.display = "none";
+} */
 
-const myLibrary = [];
+let myLibrary = [];
 
 function Book(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-    this.info = function() {
-        return(title +" by " + author + ", " + pages + ", " + read);
-    };
+  this.title = title;
+  this.author = author;
+  this.pages = pages;
+  this.read = read;
 }
 
-function addBookToLibrary() {
-    
+Book.prototype.toggleRead = function() {
+  this.read = !this.read;
 }
 
-const theHobbit = new Book('The Hobbit', 'J.R.R Tolkien', '295 Pages', 'not read');
-Object.getPrototypeOf(theHobbit) === Book.prototype;
+function toggleRead(index) {
+  myLibrary[index].toggleRead();
+  render()
+}
 
-console.log(theHobbit.info());
+function render() {
+  let bookCard = document.querySelector("#libraryGrid");
+  bookCard.innerHTML = "";
+  for ( let i = 0; i < myLibrary.length; i++) {
+    let book = myLibrary[i];
+    let bookEl = document.createElement("div");
+    bookEl.innerHTML = `
+    <div class="book-card" id="bookCard">
+      <div id="bookTitle"><p>${book.title}</p></div>
+      <div id="bookAuthor"><p> by ${book.author}</p></div>
+      <div id="bookPages"><p>${book.pages} pages</p></div>
+      <div id="bookRead"><p class="read-status">${book.read ? "Read" : "Not Read Yet"}</p></div>
+    </div>`;
+    bookCard.appendChild(bookEl);
+  }
 
+}
+
+function addBookToLibrary () {
+  let title = document.querySelector("#bookTitle").value;
+  let author = document.querySelector("#bookAuthor").value;
+  let pages = document.querySelector("#bookPages").value;
+  let read = document.querySelector("#isRead").checked;
+  let newBook = new Book(title, author, pages, read);
+  myLibrary.push(newBook);
+  render();
+
+}
+
+
+let addBookBtn = document.querySelector("#newBookBtn");
+
+addBookBtn.addEventListener("click", function() {
+  let newBookForm = document.querySelector("#addBookPopup");
+  let overlay = document.querySelector("#overlay");
+  newBookForm.style.display = "block";
+  overlay.style.display = "block";
+})
+
+document.querySelector("#addBookPopup").addEventListener("submit", function(event) {
+  event.preventDefault();
+  addBookToLibrary();
+})

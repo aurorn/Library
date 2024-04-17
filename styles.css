@@ -54,7 +54,7 @@ html, body {
     padding-top: 20px;
 }
 
-#addBook {
+#newBookBtn {
     display: inline-block;
     background-color: rgb(134, 253, 150);
     border: none;
@@ -66,11 +66,11 @@ html, body {
     transition-duration: 0.1s;
 }
 
-#addBook:hover {
+#newBookBtn:hover {
     background-color: rgb(91, 204, 91);
 }
 
-#addBook:active {
+#newBookBtn:active {
     
 }
 
@@ -84,7 +84,7 @@ html, body {
     
 }
 
-.form-container {
+.new-book-form {
     display: flex;
     flex-direction: column;
     max-width: 300px;
@@ -102,7 +102,7 @@ html, body {
 
 }
 
-.form-container input[type=text] {
+.new-book-form input[type=text] {
     width: 100%;
     padding: 10px;
     margin: 5px 0 22px 0;
@@ -111,7 +111,7 @@ html, body {
     
 }
 
-.form-container input[type=number] {
+.new-book-form input[type=number] {
     width: 100%;
     padding: 10px;
     margin: 5px 0 22px 0;
@@ -120,17 +120,17 @@ html, body {
     
 }
 
-.form-container input[type=text]:focus {
+.new-book-form input[type=text]:focus {
     background-color: #b8b5b5;
     outline: none;
 }
 
-.form-container input[type=number]:focus {
+.new-book-form input[type=number]:focus {
     background-color: #b8b5b5;
     outline: none;
 }
 
-.form-container .btn {
+.new-book-form .btn {
     background-color: rgb(134, 253, 150);
     color: rgb(0, 0, 0);
     padding: 16px 20px;
@@ -142,7 +142,7 @@ html, body {
     opacity: 0.8;
 }
 
-.library {
+.library-grid {
     display: grid;
     grid: repeat(3, 1fr) / repeat(3, 1fr);
     gap: 30px;
