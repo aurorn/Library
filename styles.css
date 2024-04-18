@@ -11,19 +11,6 @@ html, body {
     font-optical-sizing: auto;
 }
 
-.overlay {
-    display: none;
-    background-color:rgb(0, 0, 0, 0.5) ;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-}
-
-.overlay.active {
-    display: block;
-}
 
 .maingrid {
     display: grid;
@@ -70,6 +57,8 @@ html, body {
     background-color: rgb(91, 204, 91);
 }
 
+/* Popup Modal */
+
 .add-book-popup {
     position: fixed;
     z-index: 1;
@@ -80,7 +69,6 @@ html, body {
 }
 
 .add-book-popup.active {
-    display: block;
     transform: translate(-50%, -65%) scale(1);
 }
 
@@ -94,15 +82,34 @@ html, body {
     gap: 5px;
 }
 
+.new-book-form h1 {
+    display: flex;
+    justify-content: center;
+    margin: 15px;
+}
+
 .read-checkbox {
     display: flex;
     flex-direction: row;
-    gap: 50px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
     margin-bottom: 10px;
-
 }
 
-.new-book-form input[type=text] {
+.checkbox {
+    width: 20px;
+    height: 20px;
+    accent-color: rgb(91, 204, 91);
+}
+
+input::placeholder {
+    font-size: 1.2rem;
+    color: rgb(46, 45, 45);
+    font-weight: 500;
+}
+
+input[type=text], [type=number] {
     width: 100%;
     padding: 10px;
     margin: 5px 0 22px 0;
@@ -111,23 +118,18 @@ html, body {
     
 }
 
-.new-book-form input[type=number] {
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0 22px 0;
-    border: none;
-    background: #747474;
-    
-}
-
-.new-book-form input[type=text]:focus {
+input[type=text]:focus {
     background-color: #b8b5b5;
     outline: none;
 }
 
-.new-book-form input[type=number]:focus {
+input[type=number]:focus {
     background-color: #b8b5b5;
     outline: none;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+    display: none;
 }
 
 .new-book-form .btn {
@@ -141,6 +143,8 @@ html, body {
     margin-bottom:10px;
     opacity: 0.8;
 }
+
+/* Book cards in the Library Grid */
 
 .library-grid {
     display: grid;
@@ -162,23 +166,30 @@ html, body {
 }
 
 #bookTitle {
-    font-size: 2vw;
-    font-weight: 600;
+    font-size: 1.2rem;
+    font-weight: 400;
 }
 
 #bookAuthor {
-    font-size: 1.5vw;
+    font-size: 1.2rem;
     font-weight: 400;
 }
 
 #bookPages {
-    font-size: 1.3vw;
+    font-size: 1.2rem;
     font-weight: 400;
 }
 
-#bookRead {
-    font-size: 1.3vw;
-    font-weight: 400;
+.overlay {
+    display: none;
+    background-color:rgb(0, 0, 0, 0.5) ;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
 }
 
-  
+.overlay.active {
+    display: block;
+}
