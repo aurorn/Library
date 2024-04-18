@@ -6,7 +6,7 @@ function Book (title, author, pages, read) {
   this.title = title;
   this.author = author;
   this.pages = pages;
-  this.isRead = read;
+  this.read = read;
 }
 
 function addBookToLibrary () {
@@ -32,8 +32,10 @@ function createBookCard() {
       <div id="author"><p> by ${book.author}</p></div>
       <div id="pages"><p>${book.pages} pages</p></div>
       <div id="isRead"><p id=isRead">${book.read ? "Read" : "Not Read Yet"}</p></div>
-      <button class="remove-btn" onclick="removeBook(${i})">Remove</button>
-      <button class="toggle-read-btn" onclick="toggleRead(${i})">Toggle Read</button>`;
+      <div id="buttonGroup">
+        <button class="remove-btn" onclick="removeBook(${i})">Remove</button>
+        <button class="toggle-read-btn" onclick="toggleRead(${i})">Toggle Read</button>
+      </div`;
     libGrid.appendChild(bookCard);
   }
 }
