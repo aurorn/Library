@@ -22,12 +22,9 @@
         <button id="newBookBtn" class="new-book-btn">+</button>
       </ul>     
     </div>
-
-    <div class="library-grid" id="libraryGrid">
-    </div>
-    
+    <div class="library-grid" id="libraryGrid"></div>
   </div>
-  
+
   <div class="add-book-popup" id="addBookPopup">
     <form class="new-book-form" id="newBookForm">
       <h1>Add book Here</h1>
@@ -37,8 +34,10 @@
       <input type="text" placeholder="Enter Author's name" id="bookAuthor" class="input" required>
       <label for="bookPages"><b>Pages:</b></label>
       <input type="number" placeholder="Enter the Number of pages" id="bookPages" class="input" required>
-      <label for="isRead"><b>Read:</b></label>
-      <input type="checkbox" class="checkbox" id="isRead">
+      <div class="read-checkbox">
+        <label for="isRead"><b>Read:</b></label>
+        <input type="checkbox" class="checkbox" id="isRead">
+      </div>
       <button class="btn submit-btn" id="submitBtn" type="submit" value="Add Book">Submit</button>
     </form>
   </div>
