@@ -22,7 +22,7 @@ html, body {
 }
 
 .overlay.active {
-    display: flex;
+    display: block;
 }
 
 .maingrid {
@@ -70,18 +70,18 @@ html, body {
     background-color: rgb(91, 204, 91);
 }
 
-#newBookBtn:active {
-    
-}
-
 .add-book-popup {
-    display: none;
     position: fixed;
     z-index: 1;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -65%);
+    transform: translate(-50%, -65%) scale(0);
     
+}
+
+.add-book-popup.active {
+    display: block;
+    transform: translate(-50%, -65%) scale(1);
 }
 
 .new-book-form {
@@ -180,3 +180,5 @@ html, body {
     font-size: 1.3vw;
     font-weight: 400;
 }
+
+  
