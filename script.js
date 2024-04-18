@@ -1,20 +1,41 @@
-/*function openForm() {
-  document.getElementById("myForm").style.display = "block";
-  document.getElementById("overlay").style.display = "block";
-} 
-  
-function closeForm() {
-  document.getElementById("newBookForm").style.display = "none";
-  document.getElementById("overlay").style.display = "none";
-}  */
+const myLibrary = [];
+const newBookBtn = document.getElementById('newBookBtn')
+const addBookPopup = document.getElementById('addBookPopup')
 
-let myLibrary = [];
-
-function Book(title, author, pages, read) {
+function Book (title, author, pages, read) {
   this.title = title;
   this.author = author;
   this.pages = pages;
-  this.read = read;
+  this.isRead = read;
+}
+
+function addBookToLibrary () {
+  const title = document.querySelector("#bookTitle").value;
+  const author = document.querySelector("#bookAuthor").value;
+  const pages = document.querySelector("#bookPages").value;
+  const read = document.querySelector("#isRead").checked;
+
+  const newBook = new Book(title, author, pages, read);
+  myLibrary.push(newBook);
+  createBookCard();
+}
+
+function createBookCard() {
+  const libGrid = document.querySelector("#libraryGrid");
+  libGrid.innerHTML = "";
+  for (let i = 0; i < myLibrary.length; i++) {
+    let book = myLibrary[i];
+    let bookCard = document.createElement("div");
+    bookCard.setAttribute("id", "bookCard");
+    bookCard.innerHTML = 
+      `<div id="title"><p>${book.title}</p></div>
+      <div id="author"><p> by ${book.author}</p></div>
+      <div id="pages"><p>${book.pages} pages</p></div>
+      <div id="isRead"><p id=isRead">${book.read ? "Read" : "Not Read Yet"}</p></div>
+      <button class="remove-btn" onclick="removeBook(${i})">Remove</button>
+      <button class="toggle-read-btn" onclick="toggleRead(${i})">Toggle Read</button>`;
+    libGrid.appendChild(bookCard);
+  }
 }
 
 Book.prototype.toggleRead = function() {
@@ -23,56 +44,38 @@ Book.prototype.toggleRead = function() {
 
 function toggleRead(index) {
   myLibrary[index].toggleRead();
-  render()
+  createBookCard();
 }
 
-function render() {
-  let bookCard = document.querySelector("#libraryGrid");
-  bookCard.innerHTML = "";
-  for ( let i = 0; i < myLibrary.length; i++) {
-    let book = myLibrary[i];
-    let bookEl = document.createElement("div");
-    bookEl.innerHTML = `
-    <div class="book-card" id="bookCard">
-      <div id="bookTitle"><p>${book.title}</p></div>
-      <div id="bookAuthor"><p> by ${book.author}</p></div>
-      <div id="bookPages"><p>${book.pages} pages</p></div>
-      <div id="bookRead"><p class="read-status">${book.read ? "Read" : "Not Read Yet"}</p></div>
-    </div>`;
-    bookCard.appendChild(bookEl);
-  }
-
+function removeBook(index) {
+  myLibrary.splice(index, 1);
+  createBookCard();
 }
 
-function addBookToLibrary () {
-  let title = document.querySelector("#bookTitle").value;
-  let author = document.querySelector("#bookAuthor").value;
-  let pages = document.querySelector("#bookPages").value;
-  let read = document.querySelector("#isRead").checked;
-  let newBook = new Book(title, author, pages, read);
-  myLibrary.push(newBook);
-  render();
-
-}
-
-
-let addBookBtn = document.querySelector("#newBookBtn");
-addBookBtn.addEventListener("click", function() {
-  let newBookForm = document.querySelector("#addBookPopup");
-  let overlay = document.querySelector("#overlay");
-  newBookForm.style.display = "block";
-  overlay.style.display = "block";
-})
-
-let submitBtn = document.querySelector("#submitBtn");
-submitBtn.addEventListener("click", function() {
-  let newBookForm = document.querySelector("#addBookPopup");
-  let overlay = document.querySelector("#overlay");
-  newBookForm.style.display = "none";
-  overlay.style.display = "none";
-})
-
-document.querySelector("#addBookPopup").addEventListener("submit", function(event) {
+document.querySelector("#newBookForm").addEventListener("submit", function(event) {
   event.preventDefault();
   addBookToLibrary();
+  createBookCard()
 })
+
+const openAddBookPopup = () => {
+  newBookForm.reset()
+  addBookPopup.classList.add('active')
+  overlay.classList.add('active')
+}
+
+const closeAddBookPopup = () => {
+  addBookPopup.classList.remove('active')
+  overlay.classList.remove('active')
+}
+
+const closeAllPopup = () => {
+  closeAddBookPopup()
+}
+
+const handleKeyboardInput = (e) => {
+  if (e.key === 'Escape') closeAllPopup()
+}
+
+newBookBtn.onclick = openAddBookPopup
+overlay.onclick = closeAllPopup
