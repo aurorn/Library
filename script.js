@@ -1,4 +1,4 @@
-const myLibrary = [];
+let library = [];
 const newBookBtn = document.getElementById('newBookBtn');
 const addBookPopup = document.getElementById('addBookPopup');
 const libGrid = document.getElementById('libraryGrid');
@@ -12,20 +12,20 @@ function Book(title, author, pages, read) {
 }
 
 function loadFromLocalStorage() {
-  const storedLibrary = JSON.parse(localStorage.getItem('myLibrary'));
+  const storedLibrary = JSON.parse(localStorage.getItem('library'));
   if (storedLibrary) {
-    myLibrary.push(...storedLibrary);
+    library = storedLibrary.map(book => new Book(book.title, book.author, book.pages, book.read));
     displayLibrary();
   }
 }
 
 function saveToLocalStorage() {
-  localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
+  localStorage.setItem('library', JSON.stringify(library));
 }
 
 function displayLibrary() {
   libGrid.innerHTML = '';
-  myLibrary.forEach((book, index) => {
+  library.forEach((book, index) => {
     const bookCard = createBookCard(book, index);
     libGrid.appendChild(bookCard);
   });
@@ -68,29 +68,25 @@ function addBookToLibrary() {
   }
 
   const newBook = new Book(title, author, pages, read);
-  myLibrary.push(newBook);
+  library.push(newBook);
   displayLibrary();
   saveToLocalStorage();
 }
 
-Book.prototype.toggleRead = function () {
-  this.read = !this.read;
-};
-
 function toggleRead(index) {
-  myLibrary[index].toggleRead();
+  library[index].read = !library[index].read;
   updateBookCard(index);
   saveToLocalStorage();
 }
 
 function removeBook(index) {
-  myLibrary.splice(index, 1);
+  library.splice(index, 1);
   displayLibrary();
   saveToLocalStorage();
 }
 
 function updateBookCard(index) {
-  const book = myLibrary[index];
+  const book = library[index];
   const bookCards = document.querySelectorAll('.book-card');
   const bookCard = bookCards[index];
 
