@@ -62,6 +62,7 @@ Book.prototype.toggleRead = function () {
 function toggleRead(index) {
   myLibrary[index].toggleRead();
   updateBookCard(index);
+  saveToLocalStorage();
 }
 
 function removeBook(index) {
