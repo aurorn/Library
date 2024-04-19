@@ -11,6 +11,12 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
+function capitalizeFirstLetterOfEachWord(str) {
+  return str.replace(/\b\w/g, function(char) {
+    return char.toUpperCase();
+  });
+}
+
 function loadFromLocalStorage() {
   const storedLibrary = JSON.parse(localStorage.getItem('library'));
   if (storedLibrary) {
@@ -57,8 +63,12 @@ function createBookCard(book, index) {
 }
 
 function addBookToLibrary() {
-  const title = document.querySelector("#bookTitle").value;
-  const author = document.querySelector("#bookAuthor").value;
+  let title = document.querySelector("#bookTitle").value;
+  let author = document.querySelector("#bookAuthor").value;
+  
+  title = capitalizeFirstLetterOfEachWord(title);
+  author = capitalizeFirstLetterOfEachWord(author);
+  
   const pages = document.querySelector("#bookPages").value;
   const read = document.querySelector("#isRead").checked;
 
