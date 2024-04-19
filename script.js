@@ -26,9 +26,6 @@ function addBookToLibrary() {
   myLibrary.push(newBook);
   displayLibrary();
   saveToLocalStorage();
-
-  /*const newBookCard = createBookCard(newBook, myLibrary.length - 1);
-  libGrid.appendChild(newBookCard);*/
 }
 
 function createBookCard(book, index) {
@@ -69,11 +66,6 @@ function removeBook(index) {
   myLibrary.splice(index, 1);
   displayLibrary();
   saveToLocalStorage();
-  /*libGrid.innerHTML = '';
-  myLibrary.forEach((book, index) => {
-    const bookCard = createBookCard(book, index);
-    libGrid.appendChild(bookCard);
-  });*/
 }
 
 function updateBookCard(index) {
