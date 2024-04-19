@@ -17,11 +17,18 @@ function addBookToLibrary() {
   const pages = document.querySelector("#bookPages").value;
   const read = document.querySelector("#isRead").checked;
 
+  if (!title || !author || !pages) {
+    alert('Please fill out all the fields!');
+    return;
+  }
+
   const newBook = new Book(title, author, pages, read);
   myLibrary.push(newBook);
+  displayLibrary();
+  saveToLocalStorage();
 
-  const newBookCard = createBookCard(newBook, myLibrary.length - 1);
-  libGrid.appendChild(newBookCard);
+  /*const newBookCard = createBookCard(newBook, myLibrary.length - 1);
+  libGrid.appendChild(newBookCard);*/
 }
 
 function createBookCard(book, index) {
@@ -102,3 +109,24 @@ function handleKeyboardInput(e) {
 newBookBtn.addEventListener('click', openAddBookPopup);
 overlay.addEventListener('click', closeAllPopup);
 document.addEventListener('keydown', handleKeyboardInput);
+
+
+function loadFromLocalStorage() {
+  const storedLibrary = JSON.parse(localStorage.getItem('myLibrary'));
+  if (storedLibrary) {
+    myLibrary.push(...storedLibrary);
+    displayLibrary();
+  }
+}
+
+function saveToLocalStorage() {
+  localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
+}
+
+function displayLibrary() {
+  libGrid.innerHTML = '';
+  myLibrary.forEach((book, index) => {
+    const bookCard = createBookCard(book, index);
+    libGrid.appendChild(bookCard);
+  });
+}
