@@ -11,26 +11,30 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
-function addBookToLibrary() {
-  const title = document.querySelector("#bookTitle").value;
-  const author = document.querySelector("#bookAuthor").value;
-  const pages = document.querySelector("#bookPages").value;
-  const read = document.querySelector("#isRead").checked;
-
-  if (!title || !author || !pages) {
-    alert('Please fill out all the fields!');
-    return;
+function loadFromLocalStorage() {
+  const storedLibrary = JSON.parse(localStorage.getItem('myLibrary'));
+  if (storedLibrary) {
+    myLibrary.push(...storedLibrary);
+    displayLibrary();
   }
+}
 
-  const newBook = new Book(title, author, pages, read);
-  myLibrary.push(newBook);
-  displayLibrary();
-  saveToLocalStorage();
+function saveToLocalStorage() {
+  localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
+}
+
+function displayLibrary() {
+  libGrid.innerHTML = '';
+  myLibrary.forEach((book, index) => {
+    const bookCard = createBookCard(book, index);
+    libGrid.appendChild(bookCard);
+  });
 }
 
 function createBookCard(book, index) {
   const bookCard = document.createElement("div");
   bookCard.classList.add("book-card");
+  bookCard.dataset.index = index;
 
   bookCard.innerHTML = `
     <div class="title"><p>${book.title}</p></div>
@@ -50,6 +54,23 @@ function createBookCard(book, index) {
   toggleReadBtn.addEventListener('click', () => toggleRead(index));
 
   return bookCard;
+}
+
+function addBookToLibrary() {
+  const title = document.querySelector("#bookTitle").value;
+  const author = document.querySelector("#bookAuthor").value;
+  const pages = document.querySelector("#bookPages").value;
+  const read = document.querySelector("#isRead").checked;
+
+  if (!title || !author || !pages) {
+    alert('Please fill out all fields!');
+    return;
+  }
+
+  const newBook = new Book(title, author, pages, read);
+  myLibrary.push(newBook);
+  displayLibrary();
+  saveToLocalStorage();
 }
 
 Book.prototype.toggleRead = function () {
@@ -104,26 +125,5 @@ function handleKeyboardInput(e) {
 newBookBtn.addEventListener('click', openAddBookPopup);
 overlay.addEventListener('click', closeAllPopup);
 document.addEventListener('keydown', handleKeyboardInput);
-
-
-function loadFromLocalStorage() {
-  const storedLibrary = JSON.parse(localStorage.getItem('myLibrary'));
-  if (storedLibrary) {
-    myLibrary.push(...storedLibrary);
-    displayLibrary();
-  }
-}
-
-function saveToLocalStorage() {
-  localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
-}
-
-function displayLibrary() {
-  libGrid.innerHTML = '';
-  myLibrary.forEach((book, index) => {
-    const bookCard = createBookCard(book, index);
-    libGrid.appendChild(bookCard);
-  });
-}
 
 loadFromLocalStorage();
