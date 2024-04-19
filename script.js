@@ -48,8 +48,9 @@ function createBookCard(book, index) {
     <div class="pages"><p>${book.pages} pages</p></div>
     <div class="isRead"><p>${book.read ? "Read" : "Not Read Yet"}</p></div>
     <div class="buttonGroup">
+      <button class="toggle-read-btn ${book.read ? 'read' : 'not-read'}">${book.read ? '✓' : 'X'}</button>
       <button class="remove-btn">Remove</button>
-      <button class="toggle-read-btn">Toggle Read</button>
+      
     </div>
   `;
 
@@ -101,6 +102,10 @@ function updateBookCard(index) {
   const bookCard = bookCards[index];
 
   bookCard.querySelector('.isRead p').textContent = book.read ? "Read" : "Not Read Yet";
+  bookCard.querySelector('.toggle-read-btn').textContent = book.read ? '✓ ' : 'X ';
+  
+  bookCard.querySelector('.toggle-read-btn').classList.remove(book.read ? 'not-read' : 'read');
+  bookCard.querySelector('.toggle-read-btn').classList.add(book.read ? 'read' : 'not-read');
 }
 
 document.querySelector("#newBookForm").addEventListener("submit", function (event) {
