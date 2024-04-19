@@ -67,11 +67,13 @@ function toggleRead(index) {
 
 function removeBook(index) {
   myLibrary.splice(index, 1);
-  libGrid.innerHTML = '';
+  displayLibrary();
+  saveToLocalStorage();
+  /*libGrid.innerHTML = '';
   myLibrary.forEach((book, index) => {
     const bookCard = createBookCard(book, index);
     libGrid.appendChild(bookCard);
-  });
+  });*/
 }
 
 function updateBookCard(index) {
@@ -131,3 +133,5 @@ function displayLibrary() {
     libGrid.appendChild(bookCard);
   });
 }
+
+loadFromLocalStorage();
