@@ -43,14 +43,13 @@ function createBookCard(book, index) {
   bookCard.dataset.index = index;
 
   bookCard.innerHTML = `
-    <div class="title"><p>${book.title}</p></div>
+    <div class="title"><p>"${book.title}"</p></div>
     <div class="author"><p> by ${book.author}</p></div>
     <div class="pages"><p>${book.pages} pages</p></div>
     <div class="isRead"><p>${book.read ? "Read" : "Not Read Yet"}</p></div>
     <div class="buttonGroup">
       <button class="toggle-read-btn ${book.read ? 'read' : 'not-read'}">${book.read ? '✓' : 'X'}</button>
       <button class="remove-btn">Remove</button>
-      
     </div>
   `;
 
@@ -136,5 +135,17 @@ function handleKeyboardInput(e) {
 newBookBtn.addEventListener('click', openAddBookPopup);
 overlay.addEventListener('click', closeAllPopup);
 document.addEventListener('keydown', handleKeyboardInput);
+
+
+const btn = document.getElementById("toggleMode");
+const theme = document.querySelector("#theme-link");
+
+btn.addEventListener("click", function() {
+  if (theme.getAttribute("href") == "light-theme.css") {
+    theme.href = "dark-theme.css";
+  } else {
+    theme.href = "light-theme.css";
+  }
+});
 
 loadFromLocalStorage();
