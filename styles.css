@@ -1,3 +1,41 @@
+:root {
+    --body-bkg: rgb(26, 26, 26);
+
+    --nav-bkg: rgb(26, 26, 26);
+    --green-text: rgb(134, 253, 150);
+
+    --side-bkg: rgb(92, 92, 92);
+    --side-text: rgb(26, 26, 26);
+
+    --green-btn: rgb(134, 253, 150);
+    --green-btn-hover: rgb(91, 204, 91);
+
+    --lib-bkg: rgb(63, 63, 63);
+
+    --form-popup: rgb(92, 92, 92);
+    --form-title: rgb(211, 210, 210);
+    --form-text: rgb(106, 201, 119);
+    --form-placeholder: rgba(19, 19, 19, 0.5);
+
+    --bookCard: rgb(92, 92, 92);
+    --bookCard-text: rgb(228, 228, 228);
+    --bookCard-notRead-btn: rgb(95, 123, 245);
+    --bookCard-notRead-btn-hover: rgb(78, 100, 197);
+    --bookCard-btn-remove: rgb(235, 117, 96);
+    --bookCard-btn-remove-hover: rgb(206, 104, 86);
+    
+    /*--body-bkg-light:;
+
+    --nav-bkg-light:;
+    --blue-text:;
+    
+    --side-bkg-light:;
+    --side-text-light:;
+    --side-btn-light:;
+
+    --main-bkg-light:;*/
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -12,6 +50,7 @@ body {
     flex: 1;
     display: flex;
     flex-direction: column;
+    background-color: var(--body-bkg);
 
 }
 
@@ -21,17 +60,27 @@ body {
     flex: 1;
     display: flex;
     flex-direction: column;
+    
 }
  
                                     /* Navbar */
 
+
+
 .navbar {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 70%;
+    margin: 0 auto;
+    float: none;
+    padding: 10px;
+}
+
+.left, .right {
     display: flex;
     align-items: center;
-    justify-content: center;
-    background-color: rgb(26, 26, 26);
-    padding: 20px;
-    
 }
 
 #navTitle {
@@ -52,7 +101,7 @@ body {
 .sidebar-content {
     display: flex;
     flex-direction: column;
-    background-color: rgb(92, 92, 92);
+    background-color: var(--side-bkg);
     align-items: center;
     padding-top: 20px;
     width: 20%;
@@ -113,8 +162,8 @@ body {
     flex-direction: column;
     max-width: 300px;
     padding: 15px;
-    background-color: rgb(99, 99, 99);
-    border-radius: 15px;
+    background-color: var(--form-popup);
+    border-radius: 10px;
     gap: 5px;
 }
 
@@ -122,6 +171,11 @@ body {
     display: flex;
     justify-content: center;
     margin: 15px;
+    color: var(--form-title);
+}
+
+.new-book-form b {
+    color: var(--form-text);
 }
 
 .read-checkbox {
@@ -141,7 +195,7 @@ body {
 
 input::placeholder {
     font-size: 1.2rem;
-    color: rgb(46, 45, 45);
+    color: var(--form-placeholder);
     font-weight: 500;
 }
 
@@ -164,7 +218,7 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .new-book-form .btn {
-    background-color: rgb(134, 253, 150);
+    background-color: var(--green-btn);
     color: rgb(0, 0, 0);
     padding: 16px 20px;
     border: none;
@@ -173,6 +227,7 @@ input[type=number]::-webkit-inner-spin-button {
     width: 100%;
     margin-bottom:10px;
     opacity: 0.8;
+    font-size: 1.2rem;
 }
 
 #bookTitle {
@@ -202,7 +257,7 @@ input[type=number]::-webkit-inner-spin-button {
     padding: 20px;
     gap: 10px;
     border-radius: 10px;
-    background-color: rgb(92, 92, 92);
+    background-color: var(--bookCard);
     height: 200px;
     width: 250px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -211,33 +266,18 @@ input[type=number]::-webkit-inner-spin-button {
 .title {
     display: flex;
     justify-content: center;
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: rgb(214, 214, 214);
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-shadow: 1px 1px 2px black;
+    color: var(--bookCard-text);
 }
 
-.author {
+.author, .pages, .isRead {
     display: flex;
     justify-content: center;
     font-size: 1.1rem;
     font-weight: 500;
-    color: rgb(214, 214, 214);
-}
-
-.pages {
-    display: flex;
-    justify-content: center;
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: rgb(214, 214, 214);
-}
-
-.isRead {
-    display: flex;
-    justify-content: center;
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: rgb(214, 214, 214);
+    color: var(--bookCard-text);
 }
 
                                     /* Book Card Buttons */
@@ -261,36 +301,32 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .buttonGroup button.remove-btn {
-    background-color: rgb(235, 117, 96);
+    background-color: var(--bookCard-btn-remove);
 }
 
 .buttonGroup button.remove-btn:hover {
-    background-color: rgb(206, 104, 86);
+    background-color: var(--bookCard-btn-remove-hover);
 }
 
-.toggle-read-btn {
-    transition: background-color 0.1s ease;
-}
-  
 .toggle-read-btn.read {
-    background-color: rgb(58, 243, 141);
+    background-color: var(--green-btn);
     color: rgb(0, 0, 0);
     font-weight: bold;
 }
 
 .toggle-read-btn.read:hover {
-    background-color: rgb(48, 199, 116);
+    background-color: var(--green-btn-hover);
     color: rgb(0, 0, 0);
     font-weight: bold;
 }
 
 .toggle-read-btn.not-read {
-    background-color: rgb(95, 123, 245);
+    background-color: var(--bookCard-notRead-btn);
     font-weight: bold;
 }
 
 .toggle-read-btn.not-read:hover {
-    background-color: rgb(78, 100, 197);
+    background-color: var(--bookCard-notRead-btn-hover);
     font-weight: bold;
 }
 

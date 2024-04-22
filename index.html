@@ -15,17 +15,18 @@
   </head>
   <body>
     <div class="main">
-      <div class="navbar">
-        <h1 id="navTitle">Library</h1>
-        <div class="toggle-container">
-          <label class="switch">
-            <input type="checkbox" id="toggleMode">
-            <span class="slider round"></span>
-          </label>
-          <span class="toggle-label">Dark Mode</span>
+      <header>
+        <div class="navbar">
+          <h1 class="left" id="navTitle">Library</h1>
+          <div class="right toggle-container">
+            <label class="switch">
+              <input type="checkbox" id="toggleMode">
+              <span class="slider round"></span>
+            </label>
+            <span class="toggle-label">Dark Mode</span>
+          </div>
         </div>
-        
-      </div>
+      </header>
       <div class="middle-content">
         <div class="sidebar-content">
           <button id="newBookBtn" class="new-book-btn">Add +</button>
@@ -36,13 +37,13 @@
 
     <div class="add-book-popup" id="addBookPopup">
       <form class="new-book-form" id="newBookForm">
-        <h1>Add book Here</h1>
-        <label for="bookTitle"><b>Title:</b></label>
-        <input type="text" placeholder="Enter the Book Title" id="bookTitle" class="input" required>
-        <label for="bookAuthor"><b>Author:</b></label>
-        <input type="text" placeholder="Enter Author's name" id="bookAuthor" class="input" required>
-        <label for="bookPages"><b>Pages:</b></label>
-        <input type="number" placeholder="Enter the Number of pages" id="bookPages" class="input" required>
+        <h1>Add Book Here</h1>
+        <!--<label for="bookTitle"><b class="bookTitle">Title:</b></label>-->
+        <input type="text" placeholder="Title" id="bookTitle" class="input" required>
+        <!--<label for="bookAuthor"><b>Author:</b></label>-->
+        <input type="text" placeholder="Author" id="bookAuthor" class="input" required>
+        <!--<label for="bookPages"><b>Pages:</b></label>-->
+        <input type="number" placeholder="Pages" id="bookPages" class="input" required>
         <div class="read-checkbox">
           <label for="isRead"><b>Read:</b></label>
           <input type="checkbox" class="checkbox" id="isRead">
