@@ -82,8 +82,6 @@ body {
 
 .library-grid {
     flex-grow: 1;
-    flex-shrink: 1;
-    flex-basis: 0;
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
@@ -270,14 +268,6 @@ input[type=number]::-webkit-inner-spin-button {
     background-color: rgb(206, 104, 86);
 }
 
-/*.buttonGroup button.toggle-read-btn {
-    background-color: rgb(58, 243, 141);
-}
-
-.buttonGroup button.toggle-read-btn:hover {
-    background-color: rgb(50, 201, 118);
-}*/
-
 .toggle-read-btn {
     transition: background-color 0.1s ease;
 }
@@ -333,3 +323,43 @@ footer {
     color:rgb(134, 253, 150);
     
 }
+                                        /* Mobile View */
+@media (max-width: 768px) {
+    .middle-content {
+      flex-direction: column;
+    }
+  
+    .sidebar-content {
+      width: 100%;
+      padding-bottom: 20px;
+    }
+  
+    .library-grid {
+      width: 100%;
+    }
+  
+    .book-card {
+      flex: 0 0 calc(100% - 180px);
+      width: 0%;
+      margin: 10px auto;
+    }
+  
+    #newBookBtn {
+      font-size: 20px;
+      padding: 8px 12px;
+    }
+  
+    input[type=text], input[type=number] {
+      width: 100%;
+      padding: 8px;
+      margin: 5px 0 15px 0;
+    }
+  
+    footer {
+      font-size: 14px;
+    }
+  
+    #navTitle {
+      font-size: 5vh;
+    }
+  }
